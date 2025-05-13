@@ -3,27 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
+    <title>ایلیا ستوده‌نیا</title>
+    <link rel="icon" href="images/logo_stn.png" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+    <!-- اضافه کردن فونت استعداد برای زبان فارسی -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazir&display=swap">
   </head>
   <body>
+    <div class="language-toggle">
+      <button id="langBtn" onclick="toggleLang()">EN</button>
+    </div>
+
+    <button class="toggle-theme" id="themeToggle">
+      <i class="bi bi-brightness-high"></i>
+    </button>
+
     <div class="container">
       <div class="picture">
-        <img src="images/stn.jpg" />
+        <img src="images/stn.jpg" alt="ilya profile photo" />
       </div>
 
-      <h1>ilya sotoodenia</h1>
-      <p>Computer Engineering Student</p>
+      <h1 id="name">ilya sotoodenia</h1>
+      <p id="description">Computer Engineering Student</p>
 
       <div class="socials">
-        <i class="bi bi-instagram"></i>
-        <i class="bi bi-github"></i>
-        <i class="bi bi-whatsapp"></i>
+        <a href="https://instagram.com/stn_ilya" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://github.com/stn-ilya" target="_blank"><i class="bi bi-github"></i></a>
+        <a href="https://t.me/stn_ilya" target="_blank"><i class="bi bi-telegram"></i></a>
       </div>
     </div>
+
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light");
+        const icon = toggleBtn.querySelector("i");
+        if (document.body.classList.contains("light")) {
+          icon.classList.replace("bi-brightness-high", "bi-moon");
+        } else {
+          icon.classList.replace("bi-moon", "bi-brightness-high");
+        }
+      });
+
+      function toggleLang() {
+        const currentLang = document.getElementById("langBtn").innerText;
+        if (currentLang === "EN") {
+          document.getElementById("langBtn").innerText = "فارسی";
+          document.getElementById("name").innerText = "ایلیا ستوده نیا";
+          document.getElementById("description").innerText = "دانشجوی مهندسی کامپیوتر";
+          document.body.style.fontFamily = "'Vazir', sans-serif";  // تغییر فونت به استعداد
+        } else {
+          document.getElementById("langBtn").innerText = "EN";
+          document.getElementById("name").innerText = "ilya sotoodenia";
+          document.getElementById("description").innerText = "Computer Engineering Student";
+          document.body.style.fontFamily = "'Poppins', sans-serif";  // بازگشت به فونت انگلیسی
+        }
+      }
+    </script>
   </body>
 </html>
